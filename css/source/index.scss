@@ -62,60 +62,9 @@ $htmSizeArray: floor($rem-base/$ratioFor320),
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 布局 */
 body {
   font-family: 黑体;
-  background: url(../../img/bg.png) top center;
+  background: url(../img/bg.png) top center;
   background-size: 100%;
 }
 
@@ -189,7 +138,7 @@ body {
     }
     .sign-ins-coupon {
       color: #d13229;
-      background: url(../../img/skin/ticket.png) top center no-repeat;
+      background: url(../img/skin/ticket.png) top center no-repeat;
       background-size: 100%;
       width: 120px;
       width: convert-to-vw(120px, 320px);
@@ -339,7 +288,7 @@ section.rule {
   left: convert-to-vw(35px,320px);
   top: 100px;
   top: convert-to-vw(100px,320px);
-  background: url(../../img/skin/arrow-left.png) top center no-repeat;
+  background: url(../img/skin/arrow-left.png) top center no-repeat;
   background-size: 100%;
   &:active {
     background-position: bottom right;
@@ -360,7 +309,7 @@ section.rule {
   width: convert-to-vw(18px,320px);
   height: 62px;
   height: convert-to-vw(62px,320px);
-  background: url(../../img/skin/arrow-right.png) top center no-repeat;
+  background: url(../img/skin/arrow-right.png) top center no-repeat;
   background-size: 100%;
   &:active {
     background-position: bottom right;
