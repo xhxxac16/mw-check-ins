@@ -11,9 +11,6 @@
     <title>签到</title>
 
     <link rel="stylesheet" href="css/index.css">
-
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.js"></script> <!-- Just jQuery UI core & date picker module! -->
   </head>
 
   <body>
@@ -45,6 +42,9 @@
 
     </section>
 
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script> <!-- Just jQuery UI core & date picker module! -->
+    <script src="js/jquery.cookie.js"></script>
     <script>
       (function (root, factory) {
 
@@ -58,7 +58,12 @@
 
       }(this, function (exports, jq) {
 
-        exports.action = function ($) {
+        exports.init = function ($) {
+          this.setCalendar($);
+          this.signIn($);
+        }.bind(exports);
+
+        exports.setCalendar = function ($) {
           var calendar;
 
           calendar = jq('#datepicker');
@@ -78,7 +83,23 @@
             });
         };
 
-        jq(exports.action);
+        exports.signIn = function () {
+          var canSignIn, btnSignIn;
+          canSignIn = true;
+          btnSignIn = $('.btn-sign');
+          btnSignIn.on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var that;
+            that = $(this);
+            if (canSignIn) {
+              canSignIn = false;
+              that.addClass('did');
+            }
+          });
+        };
+
+        jq(exports.init);
       }));
     </script>
     
