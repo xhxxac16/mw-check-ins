@@ -1,0 +1,380 @@
+@charset "utf-8";
+/* index.css
+ * Created: 2015-01-08
+ * Update: 2016-01-08
+ * Author: Amanda
+ */
+@import "libs/rem-calc",
+        "libs/vw-calc";
+@import "libs/mixin-css3";
+// @import "libs/sprites";
+//====== variable
+
+//$rem-base: 16px;
+$max-breakpoint:640;
+$lte7:false;
+$img: "../img/";
+$version: 20151119; //css version
+$mediaArray: "only screen",
+    "only screen and (min-width: 360px) and (max-width: 399px)",
+    "only screen and (min-width: 400px) and (max-width: 479px)",
+    "only screen and (min-width: 480px) and (max-width: 639px)",
+    "only screen and (min-width: 640px) and (max-width: 749px)",
+    "only screen and (min-width: 750px)";
+
+$ratioFor320: $max-breakpoint/320;
+$ratioFor360: $max-breakpoint/360;
+$ratioFor400: $max-breakpoint/400;
+$ratioFor480: $max-breakpoint/480;
+$ratioFor640: $max-breakpoint/640;
+$ratioFor750: $max-breakpoint/750;
+$htmSizeArray: floor($rem-base/$ratioFor320),
+               floor($rem-base/$ratioFor360),
+               floor($rem-base/$ratioFor400),
+               floor($rem-base/$ratioFor480),
+               floor($rem-base/$ratioFor640),
+               floor($rem-base/$ratioFor750);
+
+
+//===== end variable
+// reset Element
+@import "libs/reset";
+// extend  %exam
+// @import "components/extend";
+// common layout
+@import "components/common";
+
+
+// import mix components
+@import
+    "app/app";//app
+
+
+// set responsive
+@for $mediaIndex from 1 to length($mediaArray) + 1 {
+    $media: nth($mediaArray, $mediaIndex);
+    $htmlFz: nth($htmSizeArray, $mediaIndex);
+    @media #{$media}
+    {
+        html {
+            font-size: $htmlFz;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 布局 */
+body {
+  font-family: 黑体;
+  background: url(../../img/bg.png) top center;
+  background-size: 100%;
+}
+
+.sign-ins-calander-panel {
+  display: block;
+  height: 317px;
+  height: convert-to-vw(317px, 320px);
+  width: 265px;
+  width: convert-to-vw(265px, 320px);
+  border-radius: 30px;
+  border-radius: convert-to-vw(30px, 320px);
+  background-color: #d7332a;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-top: convert-to-vw(15px, 320px);
+  padding: 15px;
+  padding: convert-to-vw(15px, 320px);
+  > .core {
+    width: 165px;
+    width: convert-to-vw(165px,320px);
+    height: auto;
+    margin: 0 auto;
+    .ui-datepicker-inline{
+      height: 170px;
+      height: convert-to-vw(170px, 320px);
+    }
+    .btn-sign {
+      display: block;
+      color: #d13229;
+      line-height: 33px;
+      line-height: convert-to-vw(33px, 320px);
+      font-size: 16px;
+      font-size: convert-to-vw(16px, 320px);
+      font-weight: bold;
+      text-align: center;
+      margin: 5px auto 0;
+      margin: convert-to-vw(5px, 320px) auto 0;
+      width: 135px;
+      width: convert-to-vw(135px, 320px);
+      height: 33px;
+      height: convert-to-vw(33px, 320px);
+      background-color: #ffec95;
+      border-radius: 7px;
+      border-radius: convert-to-vw(7px, 320px);
+    }
+    .btn-sign.did {
+      color: #fff;
+      background-color: #bfbbab;
+      width: 134px;
+      width: convert-to-vw(134px, 320px);
+      height: 32px;
+      height: convert-to-vw(32px, 320px);
+    }
+  }
+  .title {
+    font-size: 32px;
+    font-size: convert-to-vw(32px, 320px);
+    font-family: monospace;
+    font-weight:bold;
+    color: #ffec95;
+  }
+  .sign-describe{
+      color: #fff;
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 16px;
+      font-size: convert-to-vw(16px, 320px);
+      text-align:center;
+      margin: 2px auto;
+      margin: convert-to-vw(2px, 320px) auto;
+    }
+    .sign-ins-coupon {
+      color: #d13229;
+      background: url(../../img/_skin/ticket.png) top center no-repeat;
+      background-size: 100%;
+      width: 120px;
+      width: convert-to-vw(120px, 320px);
+      height: 45px;
+      height: convert-to-vw(45px, 320px);
+      margin: 0 auto;
+      .sign-ins-coupon-left {
+        float: left;
+        position: relative;
+        font-weight: bold;
+        font-size: 32px;
+        font-size: convert-to-vw(32px, 320px);
+        text-align: right;
+        line-height: 60px;
+        line-height: convert-to-vw(60px, 320px);
+        width: 45px;
+        width: convert-to-vw(45px, 320px);
+        height: 100%;
+        span{
+          font-size: 14px;
+          font-size: convert-to-vw(14px, 320px);
+          position: absolute;
+          left: 3px;
+          left: convert-to-vw(3px, 320px);
+          top: 5px;
+          top: convert-to-vw(5px, 320px);
+          height: 20px;
+          height: convert-to-vw(20px, 320px);
+          line-height: 20px;
+          line-height: convert-to-vw(20px, 320px);
+        }
+      }
+      .sign-ins-coupon-right{
+        float: left;
+        font-size: 14px;
+        font-size: convert-to-vw(14px, 320px);
+        margin: 5px 0 0 10px;
+        margin: convert-to-vw(5px, 320px) 0 0 convert-to-vw(10px, 320px); 
+        line-height: 20px;
+        line-height: convert-to-vw(20px, 320px);
+        width: 60px;
+        width: convert-to-vw(60px, 320px);
+        height: 100%;
+        span{
+          display: block;
+          font-family: monospace;
+          font-weight: bold;
+          font-size: 16px;
+          font-size: convert-to-vw(16px, 320px);
+        }
+      }
+    }
+}
+
+
+
+.text-unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+section.rule {
+  display: block;
+  color: #d13229;
+  text-align: center;
+  margin-top: 10px;
+  margin-top: convert-to-vw(10px, 320px);
+  margin-bottom: 15px;
+  margin-bottom: convert-to-vw(15px, 320px);
+  line-height: 20px;
+  line-height: convert-to-vw(20px, 320px);
+  > h2 {
+    line-height: 24px;
+    line-height: convert-to-vw(24px, 320px);
+    font-size: 16px;
+    font-size: convert-to-vw(16px, 320px);
+  }
+  > p {
+    text-align: left;
+    text-indent: 24px;
+    text-indent:convert-to-vw(24px, 320px);
+    margin-top: 5px;
+    margin-top: convert-to-vw(5px,320px);
+    padding:0 15px;
+    padding:0 convert-to-vw(15px, 320px);
+  }
+}
+
+
+
+/* 日历控件样式重载 */
+.hasDatepicker {
+  display: block;
+  width: 100%;
+  font-family: monospace;
+  font-size: 14px;
+  font-size: convert-to-vw(14px, 320px);
+  color: #fff;
+  .ui-datepicker-title{
+    display: none;
+  }
+
+  .ui-datepicker-calendar{
+    
+  }
+
+  a {
+    color: #fff;
+    list-style: none;
+  }
+}
+
+.ui-datepicker table {
+  border-spacing: 0 !important;
+  width: 100%;
+  th {
+    padding: 0;
+    text-align: center;
+    line-height: 25px;
+    line-height: convert-to-vw(25px, 320px);
+    font-weight: bold;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0;
+    border-bottom: 1px solid #fff;
+  }
+  tr{
+    line-height: 24px;
+    line-height: convert-to-vw(24px, 320px);
+    text-align: center;
+  }
+}
+
+
+.ui-datepicker-prev{
+  position: absolute;
+  color: transparent;
+  text-indent: -99999px;
+  width: 18px;
+  width: convert-to-vw(18px,320px);
+  height: 62px;
+  height: convert-to-vw(62px,320px);
+  left: 35px;
+  left: convert-to-vw(35px,320px);
+  top: 100px;
+  top: convert-to-vw(100px,320px);
+  background: url(../../img/_skin/arrow-left.png) top center no-repeat;
+  background-size: 100%;
+  &:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+  }
+}
+
+.ui-datepicker-next {
+  position: absolute;
+  color: transparent;
+  text-indent: -99999px;
+  right: 35px;
+  right: convert-to-vw(35px,320px);
+  top: 100px;
+  top: convert-to-vw(100px,320px);
+  width: 18px;
+  width: convert-to-vw(18px,320px);
+  height: 62px;
+  height: convert-to-vw(62px,320px);
+  background: url(../../img/_skin/arrow-right.png) top center no-repeat;
+  background-size: 100%;
+  &:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+  }
+}
+
+.ui-datepicker-other-month a{
+  color: #bfbbab;
+}
+
+.ui-datepicker-inline.select{
+
+}
+
+

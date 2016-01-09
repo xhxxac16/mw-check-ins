@@ -1,0 +1,108 @@
+﻿//prefix
+@mixin hack($name, $value){
+  -moz-#{$name}: $value;
+  -webkit-#{$name}: $value;
+  #{$name}: $value;
+}
+
+//radius
+@mixin borderRadius($param){
+  @include hack(border-radius, $param);
+}
+
+//gradient
+@mixin gra($begin,$end){
+  background-image: -webkit-gradient(linear, left top, left bottom, from($begin), to($end));
+  background-image: -webkit-linear-gradient(top, $begin, $end);
+  background-image:    -moz-linear-gradient(top, $begin, $end);
+  background-image:      -o-linear-gradient(top, $begin, $end);
+  background-image:         linear-gradient(top, $begin, $end);
+}
+
+//rotate
+@mixin rotate($degrees){
+  @include hack(transform, rotate($degrees));
+
+}
+
+//scale
+@mixin scale($x, $y){
+  @include hack(transform, scale($x, $y));
+}
+
+%flexbox{
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex; 
+}
+
+@mixin flexboxChild($num:1){
+  -webkit-box-flex: $num;      /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: $num;         /* OLD - Firefox 19- */
+  -webkit-flex: $num;          /* Chrome */
+  -ms-flex: $num;              /* IE 10 */
+  flex: $num;           
+}
+
+%flexboxColumn{
+  -webkit-box-direction: normal; 
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;  
+  -webkit-flex-direction: column;        /* column, row-reverse, column-reverse */
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+//shadow
+@mixin boxShadow($param...){
+  @include hack(box-shadow, $param);
+}
+
+//horizontalCenter
+%horizontalCenter{
+  @include hack(box-align, center);
+  @include hack(justify-content, center);
+}
+//verticalCenter
+%verticalCenter{
+  @include hack(box-pack,center);
+  @include hack(align-items,center);
+}
+
+$lte7:true !default;//ie6,7
+
+// inline-block
+@mixin inline-block{
+  display: inline-block;
+  @if $lte7 {
+    *display:inline;
+    zoom:1;
+  }
+}
+
+$vw:true !default;
+// calc
+@mixin convert-to-calc($name,$value...){
+  #{$name}:rem-calc($value);
+  @if $vw {
+    #{$name}:vw-calc($value);
+  }
+}
+
+@mixin borderArrow($width,$border-width,$color,$border-radius){
+  @include inline-block;
+  @include convert-to-calc(width,$width);
+  @include convert-to-calc(height,$width);
+  @include convert-to-calc(border-right-width,$border-width);
+  @include convert-to-calc(border-bottom-width,$border-width);
+  @include convert-to-calc(border-radius,$border-radius);
+  content:"";
+  vertical-align:middle;
+  font-size:0;
+  border-right:solid $color;
+  border-bottom:solid $color;
+  -webkit-backface-visibility:hidden;
+}
