@@ -67,10 +67,13 @@
               showOtherMonths: true,
               selectOtherMonths: true,
               beforeShowDay: function (date) {
-                var that, ifToday, day;
+                var that,
+                    ifToday,
+                    ifSignedIn,
+                    day;
                 that = $(this);
                 ifToday = that.hasClass('ui-datepicker-today');
-                return [ifToday, 'signed-in', ''];
+                return [true, 'signed-in', ''];
               }
             });
         };
