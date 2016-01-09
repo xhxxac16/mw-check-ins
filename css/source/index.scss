@@ -62,6 +62,95 @@ $htmSizeArray: floor($rem-base/$ratioFor320),
     }
 }
 
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+/* 
+:::::::::   ::::::::  :::    :::       ::::    ::::   ::::::::  :::::::::      :::     :::
+:+:    :+: :+:    :+: :+:    :+:       +:+:+: :+:+:+ :+:    :+: :+:    :+:   :+: :+:   :+:
++:+    +:+ +:+    +:+  +:+  +:+        +:+ +:+:+ +:+ +:+    +:+ +:+    +:+  +:+   +:+  +:+
++#++:++#+  +#+    +:+   +#++:+         +#+  +:+  +#+ +#+    +:+ +#+    +:+ +#++:++#++: +#+
++#+    +#+ +#+    +#+  +#+  +#+        +#+       +#+ +#+    +#+ +#+    +#+ +#+     +#+ +#+
+#+#    #+# #+#    #+# #+#    #+#       #+#       #+# #+#    #+# #+#    #+# #+#     #+# #+#
+#########   ########  ###    ###       ###       ###  ########  #########  ###     ### ##########
+ */
+
+.border-box,
+
+.border-box:before,
+
+.border-box:after {
+  
+  -moz-box-sizing: border-box;
+  
+  -webkit-box-sizing: border-box;
+  
+  box-sizing: border-box;
+  
+}
+
+/*
+ ::::::::  :::        ::::::::::     :::     :::::::::  :::::::::: ::::::::::: :::    :::
+:+:    :+: :+:        :+:          :+: :+:   :+:    :+: :+:            :+:     :+:    :+:
++:+        +:+        +:+         +:+   +:+  +:+    +:+ +:+            +:+      +:+  +:+
++#+        +#+        +#++:++#   +#++:++#++: +#++:++#:  :#::+::#       +#+       +#++:+
++#+        +#+        +#+        +#+     +#+ +#+    +#+ +#+            +#+      +#+  +#+
+#+#    #+# #+#        #+#        #+#     #+# #+#    #+# #+#            #+#     #+#    #+#
+ ########  ########## ########## ###     ### ###    ### ###        ########### ###    ###
+*/
+
+/**
+ * Clearfix Hack For IE 6/7 Only
+ *
+ * Include this rule to trigger hasLayout and contain floats.
+ *
+ */
+
+.clearfix {
+  
+  *zoom: 1;
+  
+}
+
+/**
+ * Clearfix Hack For Modern Browsers
+ *
+ * 1. The space content is one way to avoid an Opera bug when the
+ *
+ *    contenteditable attribute is included anywhere else in the document.
+ *
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *
+ *    that are clearfixed.
+ *
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *
+ *    `:before` to contain the top-margins of child elements.
+ *
+ */
+
+.clearfix:before, .clearfix:after {
+  
+  display: table; /* 1 */
+  
+  line-height: 0;
+  
+  content: ""; /* 2 */
+  
+}
+
+/**
+ * Clearfix Hack
+ */
+
+.clearfix:after {
+  
+  clear: both;
+  
+}
+
 body {
   font-family: 黑体;
   background: url(../img/bg.png) top center;
@@ -70,6 +159,9 @@ body {
 
 .sign-ins-calander-panel {
   display: block;
+  min-height: 317px;
+  min-height: convert-to-vw(317px, 320px);
+  height: auto !important;
   height: 317px;
   height: convert-to-vw(317px, 320px);
   width: 265px;
@@ -82,12 +174,15 @@ body {
   margin-top: convert-to-vw(15px, 320px);
   padding: 15px;
   padding: convert-to-vw(15px, 320px);
+  padding-bottom: 15px;
+  padding-bottom: convert-to-vw(15px, 320px);
+
   > .core {
     width: 165px;
     width: convert-to-vw(165px,320px);
     height: auto;
     margin: 0 auto;
-    .ui-datepicker-inline{
+    .ui-datepicker-inline {
       height: 170px;
       height: convert-to-vw(170px, 320px);
     }
@@ -106,9 +201,9 @@ body {
       width: convert-to-vw(135px, 320px);
       height: 33px;
       height: convert-to-vw(33px, 320px);
-      background-color: #ffec95;
       border-radius: 7px;
       border-radius: convert-to-vw(7px, 320px);
+      background-color: #ffec95;
     }
     .btn-sign.did {
       color: #fff;
@@ -119,78 +214,40 @@ body {
       height: convert-to-vw(32px, 320px);
     }
   }
-  .title {
+  .header {
+    color: #ffec95;
+    font-weight: bold;
     font-size: 32px;
     font-size: convert-to-vw(32px, 320px);
     font-family: monospace;
-    font-weight:bold;
-    color: #ffec95;
+    text-align: center;
   }
-  .sign-describe{
-      color: #fff;
-      font-weight: bold;
-      font-family: monospace;
-      font-size: 16px;
-      font-size: convert-to-vw(16px, 320px);
-      text-align:center;
-      margin: 2px auto;
-      margin: convert-to-vw(2px, 320px) auto;
-    }
-    .sign-ins-coupon {
-      color: #d13229;
-      background: url(../img/skin/ticket.png) top center no-repeat;
-      background-size: 100%;
-      width: 120px;
-      width: convert-to-vw(120px, 320px);
-      height: 45px;
-      height: convert-to-vw(45px, 320px);
-      margin: 0 auto;
-      .sign-ins-coupon-left {
-        float: left;
-        position: relative;
-        font-weight: bold;
-        font-size: 32px;
-        font-size: convert-to-vw(32px, 320px);
-        text-align: right;
-        line-height: 60px;
-        line-height: convert-to-vw(60px, 320px);
-        width: 45px;
-        width: convert-to-vw(45px, 320px);
-        height: 100%;
-        span{
-          font-size: 14px;
-          font-size: convert-to-vw(14px, 320px);
-          position: absolute;
-          left: 3px;
-          left: convert-to-vw(3px, 320px);
-          top: 5px;
-          top: convert-to-vw(5px, 320px);
-          height: 20px;
-          height: convert-to-vw(20px, 320px);
-          line-height: 20px;
-          line-height: convert-to-vw(20px, 320px);
-        }
-      }
-      .sign-ins-coupon-right{
-        float: left;
-        font-size: 14px;
-        font-size: convert-to-vw(14px, 320px);
-        margin: 5px 0 0 10px;
-        margin: convert-to-vw(5px, 320px) 0 0 convert-to-vw(10px, 320px); 
-        line-height: 20px;
-        line-height: convert-to-vw(20px, 320px);
-        width: 60px;
-        width: convert-to-vw(60px, 320px);
-        height: 100%;
-        span{
-          display: block;
-          font-family: monospace;
-          font-weight: bold;
-          font-size: 16px;
-          font-size: convert-to-vw(16px, 320px);
-        }
-      }
-    }
+  .sign-describe {
+    color: #fff;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 16px;
+    font-size: convert-to-vw(16px, 320px);
+    text-align:center;
+    margin: 2px auto;
+    margin: convert-to-vw(2px, 320px) auto;
+  }
+
+
+
+
+
+  .coupon {
+    color: #d13229;
+    width: 120px;
+    width: convert-to-vw(120px, 320px);
+    height: 45px;
+    height: convert-to-vw(45px, 320px);
+    margin: 0 auto;
+    background: url(../img/skin/ticket.png) center center no-repeat;
+    background-size: 100%;
+  }
+
 }
 
 
