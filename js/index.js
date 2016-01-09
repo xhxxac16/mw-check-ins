@@ -149,33 +149,15 @@ Page = React.createClass({displayName: "Page",
 });
 
 ReactDOM.render(
-	React.createElement(Page, null),
-	document.getElementById('container'
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	React.createElement(Page, {reqUrl: ""}),
+	document.getElementById('container')
 );
+
+
+
+
+
+
+
+
+
