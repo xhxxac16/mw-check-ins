@@ -27,25 +27,64 @@ PageHeader = React.createClass({displayName: "PageHeader",
 });
 
 Calendar = React.createClass({displayName: "Calendar",
+	loadSignDate:function(){
+		$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			success: function(data) {
+				this.setState({data: data});
+				this.initialCalendarUI();
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
+		});
+	},
+	getInitialState: function() {
+		return {data: []};
+	},
 	initialCalendarUI: function () {
-		var calendarPreset;
+		var calendarPreset, signList;
 		calendarPreset = $(ReactDOM.findDOMNode(this.refs.datePicker));
+		signList = this.state.data;
+		var format = function (date, formatStr) {
+			var str = formatStr;
+			str=str.replace(/yyyy|YYYY/,date.getFullYear());
+			str=str.replace(/yy|YY/,(date.getYear() % 100)>9?(date.getYear() % 100).toString():'0' + (date.getYear() % 100));
+
+			str=str.replace(/mm|MM/,(date.getMonth()+1>9?(date.getMonth()+1).toString():'0' + (date.getMonth()+1)));
+			
+			str=str.replace(/dd|DD/,date.getDate()>9?date.getDate().toString():'0' + date.getDate());
+			str=str.replace(/d|D/g,date.getDate());
+			return str;
+		}
 		calendarPreset.datepicker({
-          showOtherMonths: true,
-          selectOtherMonths: true,
-          beforeShowDay: function (date) {
-            var that,
-                ifToday,
-                ifSignedIn,
-                day;
-            that = $(this);
-            ifToday = that.hasClass('ui-datepicker-today');
-            return [true, 'signed-in', ''];
-          }
+			dateFormat:"yy-mm-dd",
+			// showOtherMonths: true,
+			showOtherMonths: false,
+			selectOtherMonths: true,
+			// dayNamesMin:['Sun','Mo','Tues','Wed','Th','Fri','Sa'],
+			beforeShowDay: function (date) {
+				var that,
+					// ifToday,
+					// ifSignedIn,
+					day;
+					that = $(this);
+				// ifToday = that.hasClass('ui-datepicker-today');
+				for(var i in signList){  
+					var signDate = signList[i].date;
+					// alert(signDate+'--'+format(date,'yyyy-mm-dd'));
+					if(signDate == format(date,'yyyy-mm-dd')){  
+						return [true, 'signed-in', ''];  
+						break;  
+					}
+				}
+				return [false, '', ''];
+			}
         });
 	},
 	componentDidMount: function () {
-		this.initialCalendarUI();
+		this.loadSignDate();
 	},
 	render: function () {
 		return (
@@ -55,28 +94,62 @@ Calendar = React.createClass({displayName: "Calendar",
 });
 
 BtnSignIn = React.createClass({displayName: "BtnSignIn",
+	postSignDate:function(){
+		$.ajax({
+			url: this.props.url,
+			method:'POST',
+			dataType: 'json',
+			success: function(data) {
+				this.setState({data: data});
+				$('.ui-datepicker-today').addClass('signed-in');
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
+		});
+	},
+	getInitialState: function() {
+		return {cantSignIn: false};
+	},
 	componentDidMount: function () {
-		var cantSignIn, btnSignIn;
+		var cantSignIn, btnSignIn, _this;
 		btnSignIn = $(ReactDOM.findDOMNode(this.refs.btnSignIn));
 		cantSignIn = $.cookie('cantSignIn');
+		_this = this;
+		if(cantSignIn){
+            _this.setState({cantSignIn: cantSignIn});
+            return false;
+        }
 		btnSignIn.on('click', function (e) {
 			e.stopPropagation();
 			e.preventDefault();
-			var that;
-			that = $(this);
+			var that,date,diffTime;
+            that = $(this),
+            date = new Date();
+            diffTime = (23-date.getHours())*60*60*1000 + (59-date.getMinutes())*60*1000+(60-date.getSeconds())*1000;
+            date.setTime(date.getTime()+diffTime);
+            
             if (!cantSignIn) {
               cantSignIn = false;
               $.cookie('cantSignIn', true, {
-                expires: 1
+                expires: date
               });
               that.addClass('did');
+              _this.setState({
+              	cantSignIn: cantSignIn
+              });
+              _this.postSignDate();
+              $('.ui-datepicker-today').addClass('signed-in');
             }
+            return false;
 		});
 	},
 	render: function () {
+		var text = !this.state.cantSignIn ? '立即签到' : '已签到',
+			classname = !this.state.cantSignIn ? 'btn-sign' : 'btn-sign did';
 		return (
-			React.createElement("a", {href: "#", className: !$.cookie('cantSignIn') ? "btn-sign" : "btn-sign did", ref: "btnSignIn"}, 
-				"立即签到"
+			React.createElement("a", {href: "javascript:;", className: classname, ref: "btnSignIn"}, 
+				text
 			)
 		);
 	}
@@ -87,8 +160,8 @@ CalendarPanelCore = React.createClass({displayName: "CalendarPanelCore",
 		return (
 			React.createElement("div", {className: "core"}, 
 				React.createElement(PageHeader, null), 
-				React.createElement(Calendar, null), 
-				React.createElement(BtnSignIn, null)
+				React.createElement(Calendar, {url: "date.json"}), 
+				React.createElement(BtnSignIn, {url: "date.json"})
 			)
 		);
 	}
