@@ -1,0 +1,28 @@
+@mixin iconItem($imgUrl,$name,$extend:commonMaps,$spacing:5,$spacing_w:5){
+  $width:image-width(sprite-file($imgUrl,$name));//$name's width
+  $height:image-height(sprite-file($imgUrl,$name));//$name's height
+  width:rem-calc($width + $spacing);
+  width:vw-calc($width + $spacing);
+  height:rem-calc($height + $spacing_w);
+  height:vw-calc($height + $spacing_w);
+  background-position:rem-calc(sprite-position($imgUrl,$name));//location
+  background-position:vw-calc(sprite-position($imgUrl,$name));//location
+  @extend %#{$extend};
+}
+
+@mixin iconItemNoSize($imgUrl,$name,$extend:commonMaps){
+ background-position:rem-calc(sprite-position($imgUrl,$name));//location
+ background-position:vw-calc(sprite-position($imgUrl,$name));//location
+  @extend %#{$extend};
+}
+
+@mixin iconItemPos($imgUrl,$name){
+  background-position:rem-calc(sprite-position($imgUrl,$name));
+  background-position:vw-calc(sprite-position($imgUrl,$name));
+}
+
+@mixin spritesImg($extend, $left:0, $top:0){
+  @extend %#{$extend};
+  background-position:rem-calc($left $top);
+  background-position:vw-calc($left $top);
+}
