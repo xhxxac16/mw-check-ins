@@ -27,7 +27,7 @@ MW Sign-in for WeChat
 #### 发送当前访问页面时签到的记录至服务器端供持久存储
 
 ```http
-[http|https]://domain.com/getSignInHistory?user=&sign_data=&key=
+[http|https]://domain.com/saveSignInData?user=&sign_data=&key=
 ```
 
 + `user`, **`String` 类型**; **默认值为`空`**。
