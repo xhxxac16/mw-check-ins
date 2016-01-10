@@ -40,10 +40,24 @@ MW Sign-in for WeChat
 
 
 
-涉及的预处理功能
-----------------
+依赖的第三方库&技术
+------------
 
-| 功能                                    | 概要                               |
+目前，该前端工程依赖的第三方库&技术：
+
+* [React.js](https://facebook.github.io/react/index.html)，用于构建用户界面的JAVASCRIPT库。
+* [jQuery](https://jquery.com/)，一个兼容多浏览器的 JavasSript 框架，写得更少，做得更多。
+* [jQuery UI Calendar](https://jqueryui.com/datepicker/)，一个以 jQuery 为基础的 JavaScript 用户界面套件（萃取日期插件来辅助表现本工程用户界面）。
+* [CSS VW 长度单位](http://web-design-weekly.com/2014/11/18/viewport-units-vw-vh-vmin-vmax/)，相对于视窗宽度的长度单位。
+
+这并非表示线框工程不支持其他浏览器，仅仅是因为我们集中精力去支持上述浏览器。
+
+
+
+依赖的预处理技术
+--------------
+
+| 技术                                    | 概要                               |
 |----------------------------------------|------------------------------------|
 | Sass                                   | [Sass](http://sass-lang.com/) 是一种 CSS 扩展语言，提供了许多便利的写法，使得CSS的开发，变得简单和可维护。 |
 | JSX                                    | [JSX](http://facebook.github.io/jsx/) 是一个看起来很像 XML 的 JavaScript 语法扩展。|
