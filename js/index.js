@@ -10,7 +10,12 @@ var PageHeader,
 	Rule,
 	Page,
 
+	reqUrl,
+	postUrl,
 	RULE;
+
+reqUrl = 'date.json';
+postUrl = 'date.json'
 
 RULE = {
 	P1: "活动是由共同目的联合起来并完成一定社会职能的动作的总和。活动由目的、动机和动作构成，具有完整的结构系统。苏联心理学家从20年代起就对活动进行了一系列研究。其中Α.Н.列昂节夫的活动理论对苏联心理学的发展影响很大，成为现代苏联心理学的重要理论基石。",
@@ -160,8 +165,8 @@ CalendarPanelCore = React.createClass({displayName: "CalendarPanelCore",
 		return (
 			React.createElement("div", {className: "core"}, 
 				React.createElement(PageHeader, null), 
-				React.createElement(Calendar, {url: "date.json"}), 
-				React.createElement(BtnSignIn, {url: "date.json"})
+				React.createElement(Calendar, {url: reqUrl}), 
+				React.createElement(BtnSignIn, {url: reqUrl})
 			)
 		);
 	}
@@ -222,7 +227,7 @@ Page = React.createClass({displayName: "Page",
 });
 
 ReactDOM.render(
-	React.createElement(Page, {reqUrl: ""}),
+	React.createElement(Page, null),
 	document.getElementById('container')
 );
 
