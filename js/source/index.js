@@ -105,13 +105,13 @@
 			$.ajax({
 				url: this.props.url,
 				method:'POST',
-				dataType: 'json',
+				// dataType: 'json',
 				success: function(data) {
 					this.setState({data: data});
-					$('.ui-datepicker-today').addClass('signed-in');
 				}.bind(this),
 				error: function(xhr, status, err) {
 					console.error(this.props.url, status, err.toString());
+					$('.ui-datepicker-today').removeClass('signed-in');
 				}.bind(this)
 			});
 		},
@@ -135,7 +135,7 @@
 	            date = new Date();
 	            diffTime = (23-date.getHours())*60*60*1000 + (59-date.getMinutes())*60*1000+(60-date.getSeconds())*1000;
 	            date.setTime(date.getTime()+diffTime);
-	            
+	            // data = $('#datepicker').datepicker("getDate");
 	            if (!cantSignIn) {
 	              cantSignIn = false;
 	              $.cookie('cantSignIn', true, {
@@ -145,8 +145,8 @@
 	              _this.setState({
 	              	cantSignIn: cantSignIn
 	              });
-	              _this.postSignDate();
 	              $('.ui-datepicker-today').addClass('signed-in');
+	              _this.postSignDate();
 	            }
 	            return false;
 			});
