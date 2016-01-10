@@ -208,10 +208,10 @@ body {
     .btn-sign.did {
       color: #fff;
       background-color: #bfbbab;
-      width: 134px;
-      width: convert-to-vw(134px, 320px);
-      height: 32px;
-      height: convert-to-vw(32px, 320px);
+      // width: 134px;
+      // width: convert-to-vw(134px, 320px);
+      // height: 32px;
+      // height: convert-to-vw(32px, 320px);
     }
   }
   .header {
@@ -308,6 +308,13 @@ section.rule {
   a {
     color: #fff;
     list-style: none;
+  }
+
+  .signed-in{
+    // width:51px;
+    // height:43px;
+    background: url(../img/skin/signed.png) 0 70% no-repeat;
+    background-size: 100%;
   }
 }
 
