@@ -195,8 +195,8 @@ body {
       font-size: convert-to-vw(16px, 320px);
       font-weight: bold;
       text-align: center;
-      margin: 5px auto 0;
-      margin: convert-to-vw(5px, 320px) auto 0;
+      margin: 7px auto 0;
+      margin: convert-to-vw(7px, 320px) auto 0;
       width: 135px;
       width: convert-to-vw(135px, 320px);
       height: 33px;
@@ -229,8 +229,10 @@ body {
     font-size: 16px;
     font-size: convert-to-vw(16px, 320px);
     text-align:center;
-    margin: 2px auto;
-    margin: convert-to-vw(2px, 320px) auto;
+    margin: 10px auto;
+    margin: convert-to-vw(10px, 320px) auto;
+    margin-bottom: 7px;
+    margin-bottom: convert-to-vw(7px, 320px);
   }
 
 
