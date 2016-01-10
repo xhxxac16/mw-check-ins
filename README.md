@@ -50,8 +50,6 @@ MW Sign-in for WeChat
 * [jQuery UI Calendar](https://jqueryui.com/datepicker/)，一个以 jQuery 为基础的 JavaScript 用户界面套件（萃取日期插件来辅助表现本工程用户界面）。
 * [CSS VW 长度单位](http://web-design-weekly.com/2014/11/18/viewport-units-vw-vh-vmin-vmax/)，相对于视窗宽度的长度单位。
 
-这并非表示线框工程不支持其他浏览器，仅仅是因为我们集中精力去支持上述浏览器。
-
 
 
 依赖的预处理技术
