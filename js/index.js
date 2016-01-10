@@ -76,7 +76,7 @@ Calendar = React.createClass({displayName: "Calendar",
 					// alert(signDate+'--'+format(date,'yyyy-mm-dd'));
 					if(signDate == format(date,'yyyy-mm-dd')){  
 						return [true, 'signed-in', ''];  
-						break;  
+						break;
 					}
 				}
 				return [false, '', ''];
