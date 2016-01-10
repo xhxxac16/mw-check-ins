@@ -7,9 +7,9 @@
 [http|https]://domain.com/getSignInHistory?user=&key=
 ```
 
-+ `user`, **`String` 类型**; **默认值为`空`**。
++ `user`, **`String` 类型**; **默认值为 `空`**。
 
-+ `key`, **`String` 类型**; **默认值为`空`**; 进行有效性验证。
++ `key`, **`String` 类型**; **默认值为 `空`**; 进行有效性验证。
 
 **返回数据的表现：**
 
@@ -24,14 +24,14 @@
 #### 发送当前访问页面时签到的记录至服务器端供持久存储
 
 ```http
-[http|https]://domain.com/saveSignInData?user=&sign_data=&key=
+[http|https]://domain.com/saveSignInData?user=&signed=&key=
 ```
 
-+ `user`, **`String` 类型**; **默认值为`空`**。
++ `user`, **`String` 类型**; **默认值为 `空`**。
 
-+ `sign_data`, **`Array` 类型**; **默认值为`空`**。
++ `signed`, **`Boolean` 类型**; **默认值为 `false`**；通知服务端程序记录用户操作时间，记录的并非用户时间，而是服务器时间。
 
-+ `key`, **`String` 类型**; **默认值为`空`**; 进行有效性验证。
++ `key`, **`String` 类型**; **默认值为 `空`**; 进行有效性验证。
 
 
 
